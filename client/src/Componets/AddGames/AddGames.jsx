@@ -76,7 +76,25 @@ export default function AddGames() {
     function handleInputChanguePlataform(e) {
         e.preventDefault();
         let dato = document.querySelector("#platforms");
-        console.log(dato.value);
+
+        setInput({
+            ...input,
+            platforms: [...input.platforms, dato.value],
+        });
+        setErrors(
+            validate({
+                ...input,
+                platforms: [...input.platforms, dato.value],
+            })
+        );
+    }
+    function handleDeletePlatform(el) {
+        const newinput = {
+            ...input,
+            platforms: input.platforms.filter((d) => d !== el),
+        };
+        setInput(newinput);
+        setErrors(validate(newinput));
     }
     //usamos un state para el error
     const [errors, setErrors] = useState({});
@@ -153,7 +171,7 @@ export default function AddGames() {
                             <ul>
                                 <div >
                                     {input.gender.map((el) => (
-                                        <div key={el.id}>
+                                        <div key={el}>
                                             <li>{el}</li>
                                             <span
 
@@ -173,18 +191,18 @@ export default function AddGames() {
                                 name="platforms"
                                 placeholder="ruta  platforms"
                                 id="platforms"
-                                 
+                                
                             />
                             <button onClick={(e) => handleInputChanguePlataform(e)}>adicionar</button>
 
                             <ul>
                                 <div >
                                     {input.platforms.map((el) => (
-                                        <div key={el.id}>
+                                        <div key={el}>
                                             <li>{el}</li>
                                             <span
 
-                                                onClick={() => handleDelete(el)}
+                                                onClick={() => handleDeletePlatform(el)}
                                             >
                                                 x
                                             </span>
