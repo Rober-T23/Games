@@ -1,0 +1,23 @@
+.container__paginate {
+    margin-bottom: 20px;
+}
+
+.button__paginado {
+    background: white;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    border-radius: 16%;
+    margin-bottom: 1rem;
+}
+
+.b__active {
+    background: hsl(0, 90%, 50%);
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.button__paginado:hover {
+    background:  hsl(0, 90%, 50%);
+    cursor: pointer;
+}

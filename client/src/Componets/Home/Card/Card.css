@@ -1,0 +1,73 @@
+.menu__card {
+  background-color: #121212;
+  width: 276px;
+  height: 350px; 
+  border-radius: 20px 20px 20px 20px;
+  
+  color: white;
+  box-shadow: 4px 4px 4px 4px rgba(0.5, 0.5, 0.5, 0.5),
+  2px -2px 0 rgba(255, 255, 255, 0.9);
+}
+
+.menu__card .menu__image {
+  width: 276px;
+  height: 245px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px 20px 0px 0px;
+}
+.button-play{
+  position: absolute;
+  margin-left: 10px;
+
+}
+.menu__card .menu__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.3s;
+}
+.menu__image{
+  position: relative;
+}
+.menu__image button{
+  border: none;
+  background-color: #ED0000;
+  position: absolute;
+  color: white;
+  left: 10px;
+  top: 81%;
+ 
+}
+
+
+.div-rating{
+  position: relative;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+ 
+}
+.div-rating h4{
+  margin: 0px;
+}
+.div-rating p{
+  margin: 0px;
+}
+.card_genero {
+  display: flex;
+  flex-direction: row;
+  height: 55px;
+}
+.card_genero p {
+  font-size: 13.5px;
+  margin: 1px;
+  padding: 4px
+
+}
