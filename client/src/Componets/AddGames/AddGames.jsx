@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { postAddGames, getAllGenders } from '../../Redux/Action/index'
 import { useHistory } from 'react-router-dom';
-
+import './addGames.css'
 
 export default function AddGames() {
 
@@ -100,139 +100,167 @@ export default function AddGames() {
     const [errors, setErrors] = useState({});
     return (
         <>
+            <h1>NEW GAMES</h1>
             <div className="container__forms">
-                <div >
-                    <h1>NEW GAMES</h1>
-                    <form onSubmit={handleSubmit}>
-                        {/*DATO NOMNBRE */}
-                        <div className="input__text">
+
+                <form onSubmit={handleSubmit}>
+
+                    <div className="izquierda">
+
+                        <div className="data-one">
+                            {/*DATO NOMNBRE */}
+                            <div className="input__text">
+                                <p>Nombre</p>
+                                <input
+                                    type="text"
+                                    onChange={inputHandleChangue}
+                                    name="name"
+                                    value={input.name}
+                                />
+                                 {errors.name && <p className='danger'>{errors.name}</p>}
+                            </div>
+                           
+                            {/*DATOS IMAGENES  */}
+                            <div className="input__text">
+                                <p>Imagen</p>
+                                <input
+                                    type="text"
+                                    name="image"
+                                    value={input.image}
+                                    onChange={inputHandleChangue}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="data-two">
+                            {/* DATOS Fecha */}
+                            <div>
+                                <p>Fecha de creasion</p>
+                                <input id='fecha'
+                                    type="date"
+                                    name="released"
+                                    value={input.released}
+                                    onChange={inputHandleChangue}
+                                />
+                            </div>
+                            {/* DATOS Generos */}
+                            <div>
+                                <p>Generos</p>
+                                <select name="generos" onChange={(e) => selectHandleGames(e)}>
+                                    {genders?.map((el) => (
+                                        <option key={el.id} value={el.name}>{el.name}</option>
+                                    ))}
+                                </select>
+                                {errors.genders && <p className='danger'>{errors.genders}</p>}
+                            </div>
+                            
+                        </div>
+                        {/* DATOS Rating */}
+                        <div className="data-rating">
+                            <p>{input.rating}</p>
                             <input
 
-                                type="text"
-                                placeholder="Agregar un nombre de games:"
+                                type="range"
+                                min="1"
+                                max="100"
+                                name="rating"
+                                value={input.rating}
                                 onChange={inputHandleChangue}
-                                name="name"
+                            />
+                        </div>
 
-                                value={input.name}
-                            />
+                        {/* DATOS platforms */}
+                        <div className="data-platforms">
+                            <div className="title-platforms">
+                                <p>Plataformas</p>
+                                <input
+                                    type="text"
+                                    name="platforms"
+                                    id="platforms"
+                                />
+                            </div>
+                            <div >
+
+                                <button onClick={(e) => handleInputChanguePlataform(e)}>Adicionar</button>
+                            </div>
+                            {errors.platforms && <p className='danger'>{errors.platforms}</p>}
                         </div>
-                        {/*DATOS IMAGENES  */}
-                        <div className="input__text">
-                            <input
-                                type="text"
-                                name="image"
-                                placeholder="ruta imagen"
-                                value={input.image}
-                                onChange={inputHandleChangue}
-                            />
-                        </div>
+                       
                         {/*DATOS Descripción */}
-                        <div className="input__text">
-                            <input
-                                type="text"
+                        <div className="data-descripcion">
+                            <textarea
+                                cols="40"
+                                rows="3"
                                 name="description"
                                 placeholder="ruta Descripción"
                                 value={input.description}
                                 onChange={inputHandleChangue}
                             />
+                             
                         </div>
-                        {/* DATOS Fecha */}
-
-                        <div className="input__text">
-                            <input
-                                type="date"
-                                name="released"
-                                placeholder="ruta  released"
-                                value={input.released}
-                                onChange={inputHandleChangue}
-                            />
-                        </div>
-                        {/* DATOS Rating */}
-                        <div className="input__text">
-
-                            <input
-                                type="range"
-                                min="1"
-                                max="100"
-                                name="rating"
-                                placeholder="ruta  rating"
-                                value={input.rating}
-                                onChange={inputHandleChangue}
-                            />
-                        </div>
-                        {/* DATOS Generos */}
-                        <div>
-                            <select name="generos" onChange={(e) => selectHandleGames(e)}>
-                                {genders?.map((el) => (
-                                    <option key={el.id} value={el.name}>{el.name}</option>
-                                ))}
-                            </select>
-
-                            <ul>
-                                <div >
-                                    {input.gender.map((el) => (
-                                        <div key={el}>
-                                            <li>{el}</li>
-                                            <span
-
-                                                onClick={() => handleDelete(el)}
-                                            >
-                                                x
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </ul>
-                        </div>
-                        {/* DATOS platforms */}
-                        <div>
-                            <input
-                                type="text"
-                                name="platforms"
-                                placeholder="ruta  platforms"
-                                id="platforms"
-                                
-                            />
-                            <button onClick={(e) => handleInputChanguePlataform(e)}>adicionar</button>
-
-                            <ul>
-                                <div >
-                                    {input.platforms.map((el) => (
-                                        <div key={el}>
-                                            <li>{el}</li>
-                                            <span
-
-                                                onClick={() => handleDeletePlatform(el)}
-                                            >
-                                                x
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </ul> 
-                        </div>
+                        {errors.description && <p className='danger'>{errors.description}</p>}
                         {!input.name || !input.description || !input.platforms.length ? (
                             <div>
-                                <input
+                                <button
+                                    id='button'
                                     type="submit"
                                     value=" Add Recipe"
                                     disabled
-                                />
+                                >Guardar</button>
                             </div>
                         ) : (
                             <div >
-                                <input
+                                <button
+                                    id='button'
                                     type="submit"
-                                    value=" Add Recipe"                              
-                                    
-                                />
+                                    value=" Add Recipe"
+
+                                >Guardar</button>
                             </div>
                         )}
+                    </div>
+                    <div className="derecha">
+                        <ul className='data-gender'>
+                        <p>Generos: </p>
+                            <div className='posicion'>
+                                
+                                {input.gender.map((el) => (
+                                    <div className='chip' key={el}>
+                                        <li>{el}</li>
+                                        <span
+                                            className='button-x'
+                                            onClick={() => handleDelete(el)}
+                                        >
+                                            x
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </ul>
+                        <ul className='data-platforms-x'>
+                        <p>Plataformas:</p>
+                            <div className='posicion'>
+                               
+                                {input.platforms.map((el) => (
+                                    <div className='chip' key={el}>
+                                        <li>{el}</li>
+                                        <span
+                                            className='button-x'
+                                            onClick={() => handleDeletePlatform(el)}
+                                        >
+                                            x
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </ul>
 
-                    </form>
+                    </div>
 
-                </div>
+                </form>
+
             </div>
+
 
         </>
     )

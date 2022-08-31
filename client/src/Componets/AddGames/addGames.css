@@ -1,0 +1,230 @@
+.container__forms {
+    width: 700px;
+    height: 420px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 30px;
+
+    box-shadow: 2px 1px 6px 2px gray;
+}
+
+.container__forms form {
+
+    width: 100%;
+    display: flex;
+    flex-direction: inherit
+}
+
+.izquierda {
+    background: #222222;
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 20px;
+    width: 70%;
+}
+
+.derecha {
+    background: #060606;
+    width: 30%
+}
+
+.container__forms input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #B90D24;
+    margin-right: 40px;
+    width: 200px;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.container__forms input:focus {
+    outline: none;
+}
+.container__forms textarea:focus {
+    outline: none;
+}
+
+.izquierda p {
+    float: left;
+}
+
+.data-one {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.data-two {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.data-two select {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #B90D24;
+    margin-right: 40px;
+    width: 200px;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.data-two select:focus {
+    outline: none;
+}
+
+.data-two select option {
+    background: #2f3640;
+    border: none;
+}
+
+.data-rating input {
+    width: 92%;
+}
+
+.data-platforms {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 92%;
+}
+
+.data-platforms button {
+    margin-top: 20px;
+    background: #B90D24;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    cursor: hand;
+}
+.data-platforms button:hover {
+    margin-top: 20px;
+    background: white ;
+    color: #B90D24;
+ 
+}
+
+.data-platforms input {
+    width: 315px;
+}
+
+.data-descripcion {
+    width: 92%;
+    display: flex;
+}
+
+textarea {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #B90D24;
+    margin-right: 40px;
+    color: white;
+
+}
+
+#button {
+    width: 92%;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #B90D24;
+    border: none;
+    color: white;
+
+}
+#button:hover {
+    background: white;
+    color: #B90D24;
+}
+
+#fecha {
+    color: white;
+}
+
+/* Dtos de generos */
+
+
+
+ul li {
+    list-style: none;
+    width: 100%;
+}
+
+ul li {
+    list-style: none;
+    color: white;
+    height: 25px;
+    margin-bottom: 3px;
+    margin: 5px;
+}
+
+.chip {
+    min-height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 7px;
+    padding: 0 4px;
+    margin: 2px;
+    border: 1px solid #B90D24;
+}
+
+.data-gender {
+    margin-top: 10px;
+    height: 50%;
+    max-height: 40%;
+    overflow-y: auto;
+}
+
+.data-platforms-x {
+    height: 50%;
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.buton__x {
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.derecha span {
+    cursor: pointer;
+    cursor: hand;
+    height: 100%;
+    width: 20px;
+    background-color: #B90D24;
+}
+
+.derecha span:hover {
+    background-color: #faf2f2;
+    color: black;
+}
+
+.derecha p {
+    position: fixed;
+}
+
+.posicion {
+    margin-top: 30px;
+}
+
+.danger {
+    color: red;
+    font-size: 10px;
+}
+
+input.danger {
+    border-bottom: 2px solid red;
+}
