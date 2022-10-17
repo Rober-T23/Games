@@ -19,7 +19,7 @@ module.exports = {
             });
             console.log('Generos agregados correctamente');
         } else {
-            console.log('los datos de dietas ya estan cargados');
+            console.log('los datos de los generos ya estan cargados');
         }
     },
 

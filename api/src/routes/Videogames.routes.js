@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
 
     try {
         const { image, name, description, released, rating, platforms, genero } = req.body;
-
+        console.log(req.body);
         if (name != '' && description != '') {
             const newVideojuego = await Videogame.create({
                 image,
@@ -74,7 +74,7 @@ router.post('/', async (req, res) => {
 
             let generos = await Generos.findAll({
                 where: {
-                    name: genero.map(e => e.name)
+                    name:  genero
                 }
             })
             // let generos = Generos.findAll({
@@ -97,7 +97,15 @@ router.post('/', async (req, res) => {
 
 });
 
+router.get('/genders',async(req,res)=>{
+    try {
+        let gender = await Generos.findAll();
 
+        res.status(200).send(gender);
+    } catch (error) {
+        console.log(error)
+    }
+})
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

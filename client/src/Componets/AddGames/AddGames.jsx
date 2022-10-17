@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { postAddGames, getAllGenders } from '../../Redux/Action/index'
 import { useHistory } from 'react-router-dom';
@@ -13,7 +14,7 @@ export default function AddGames() {
     }, [dispatch])
 
     const histori = useHistory();
-    const genders = useSelector((state) => state.gender);
+    const generos = useSelector((state) => state.gender);
     const [input, setInput] = useState({
         name: "",
         image: "",
@@ -21,7 +22,7 @@ export default function AddGames() {
         released: "",
         rating: 0,
         platforms: [],
-        gender: []
+        genero: []
     });
     console.log(input)
     function handleSubmit(e) {
@@ -34,7 +35,7 @@ export default function AddGames() {
             released: "",
             rating: 0,
             platforms: [],
-            gender: []
+            genero: []
         });
         histori.push('/home');
     }
@@ -50,15 +51,15 @@ export default function AddGames() {
         );
     }
     function selectHandleGames(e) {
-        if (!input.gender.includes(e.target.value)) {
+        if (!input.genero.includes(e.target.value)) {
             setInput({
                 ...input,
-                gender: [...input.gender, e.target.value],
+                genero: [...input.genero, e.target.value],
             });
             setErrors(
                 validate({
                     ...input,
-                    gender: [...input.gender, e.target.value],
+                    genero: [...input.genero, e.target.value],
                 })
             );
         }
@@ -67,7 +68,7 @@ export default function AddGames() {
     function handleDelete(el) {
         const newinput = {
             ...input,
-            gender: input.gender.filter((d) => d !== el),
+            genero: input.genero.filter((d) => d !== el),
         };
         setInput(newinput);
         setErrors(validate(newinput));
@@ -100,8 +101,10 @@ export default function AddGames() {
     const [errors, setErrors] = useState({});
     return (
         <>
+            <Link to='/Home'><button className='btn'>x</button></Link>
             <h1>NEW GAMES</h1>
             <div className="container__forms">
+
 
                 <form onSubmit={handleSubmit}>
 
@@ -117,9 +120,9 @@ export default function AddGames() {
                                     name="name"
                                     value={input.name}
                                 />
-                                 {errors.name && <p className='danger'>{errors.name}</p>}
+                                {errors.name && <p className='danger'>{errors.name}</p>}
                             </div>
-                           
+
                             {/*DATOS IMAGENES  */}
                             <div className="input__text">
                                 <p>Imagen</p>
@@ -147,13 +150,13 @@ export default function AddGames() {
                             <div>
                                 <p>Generos</p>
                                 <select name="generos" onChange={(e) => selectHandleGames(e)}>
-                                    {genders?.map((el) => (
+                                    {generos?.map((el) => (
                                         <option key={el.id} value={el.name}>{el.name}</option>
                                     ))}
                                 </select>
-                                {errors.genders && <p className='danger'>{errors.genders}</p>}
+                                {errors.generos && <p className='danger'>{errors.generos}</p>}
                             </div>
-                            
+
                         </div>
                         {/* DATOS Rating */}
                         <div className="data-rating">
@@ -185,7 +188,7 @@ export default function AddGames() {
                             </div>
                             {errors.platforms && <p className='danger'>{errors.platforms}</p>}
                         </div>
-                       
+
                         {/*DATOS Descripción */}
                         <div className="data-descripcion">
                             <textarea
@@ -196,7 +199,7 @@ export default function AddGames() {
                                 value={input.description}
                                 onChange={inputHandleChangue}
                             />
-                             
+
                         </div>
                         {errors.description && <p className='danger'>{errors.description}</p>}
                         {!input.name || !input.description || !input.platforms.length ? (
@@ -221,10 +224,10 @@ export default function AddGames() {
                     </div>
                     <div className="derecha">
                         <ul className='data-gender'>
-                        <p>Generos: </p>
+                            <p>Generos: </p>
                             <div className='posicion'>
-                                
-                                {input.gender.map((el) => (
+
+                                {input.genero.map((el) => (
                                     <div className='chip' key={el}>
                                         <li>{el}</li>
                                         <span
@@ -238,9 +241,9 @@ export default function AddGames() {
                             </div>
                         </ul>
                         <ul className='data-platforms-x'>
-                        <p>Plataformas:</p>
+                            <p>Plataformas:</p>
                             <div className='posicion'>
-                               
+
                                 {input.platforms.map((el) => (
                                     <div className='chip' key={el}>
                                         <li>{el}</li>
@@ -276,8 +279,8 @@ export function validate(input) {
         errors.description = '! description  is required';
     } else if (!input.platforms) {
         errors.platforms = '! platforms  is required';
-    } else if (!input.gender.length) {
-        errors.gender = 'Seleccione al menos un genero';
+    } else if (!input.genero.length) {
+        errors.genero = 'Seleccione al menos un genero';
     }
 
     return errors;

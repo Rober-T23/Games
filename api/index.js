@@ -24,7 +24,7 @@ const { conn } = require('./src/db.js');
 const {getgenerosApi}= require('./src/controller/generosApi')
 const { getApiInfo}= require('./src/controller/gamesApi')
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(3001,async () => {
    
     console.log('%s listening at 3001');

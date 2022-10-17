@@ -24,7 +24,7 @@ export default function Details() {
                             <div className='container-izquierda'>
                                 <h1>{el.name}</h1>
                                 <p>Fecha lanzamiento: {el.released}</p>
-                                <input type="range" value={el.rating}></input>
+                            
                                 <p>Rating : {el.rating}</p>
                                 <div className="container-gender">
                                     {
