@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Generos } = require('../db');
-const { API_KEY } = process.env;
+const { API_KEY } = require('../../Config');
 
 module.exports = {
     getgenerosApi: async () => {
