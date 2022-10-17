@@ -29,7 +29,7 @@ const {DB_PORT} = require('./Config')
 conn.sync({ force: false }).then(() => {
   server.listen(DB_PORT,async () => {
    
-    console.log('%s listening at 3001');
+    console.log('%s listening at',DB_PORT);
     await getgenerosApi();
     await getApiInfo();
   });
