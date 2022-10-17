@@ -5,6 +5,7 @@ const { Videogame, Generos } = require('../db');
 
 /* Obtengo  las videogames de la Api */
 const getApiInfo = async () => {
+   try {
     const lengthdata = await Videogame.findAll();
     if (lengthdata.length < 100) {
         for (let index = 1; index < 6; index++) {
@@ -37,6 +38,9 @@ const getApiInfo = async () => {
     } else {
         console.log('los datos de videogames ya estan cargados 202');
     }
+   } catch (error) {
+      res.status(400).send(error);
+   }
 };
 
 const getDbinfo = async () => {

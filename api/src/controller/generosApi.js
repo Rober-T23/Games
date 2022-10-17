@@ -4,23 +4,27 @@ const { API_KEY } = process.env;
 
 module.exports = {
     getgenerosApi: async () => {
-        const lengthdata = await Generos.findByPk(1);
+        try {
+            const lengthdata = await Generos.findByPk(1);
 
-        if (!lengthdata) {
-            const generosApi = (await axios.get(
-                `https://api.rawg.io/api/genres?key=${API_KEY}`
-            ))
-            let generosApis = generosApi.data.results.map(e => e.name);
+            if (!lengthdata) {
+                const generosApi = (await axios.get(
+                    `https://api.rawg.io/api/genres?key=${API_KEY}`
+                ))
+                let generosApis = generosApi.data.results.map(e => e.name);
 
-            generosApis.forEach((el) => {
-                Generos.findOrCreate({
-                    where: { name: el },
+                generosApis.forEach((el) => {
+                    Generos.findOrCreate({
+                        where: { name: el },
+                    });
                 });
-            });
-            console.log('Generos agregados correctamente');
-        } else {
-            console.log('los datos de los generos ya estan cargados');
+                console.log('Generos agregados correctamente');
+            } else {
+                console.log('los datos de los generos ya estan cargados');
+            }
+
+        } catch (error) {
+
         }
     },
-
 };
