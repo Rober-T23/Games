@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { API_KEY } = process.env;
+const { API_KEY } = require('../../Config');
 const { Videogame, Generos } = require('../db');
 
 console.log(API_KEY)
