@@ -8,7 +8,7 @@ const getApiInfo = async () => {
     try {
         const lengthdata = await Videogame.findAll();
         if (lengthdata.length < 100) {
-            console.log('entry')
+            console.log('entry', API_KEY)
             for (let index = 1; index < 6; index++) {
                 const urlApi = await axios.get(
                     `https://api.rawg.io/api/games?key=${API_KEY}&page=${index}`
