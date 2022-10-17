@@ -26,7 +26,7 @@ const { getApiInfo}= require('./src/controller/gamesApi')
 
 // Syncing all the models at once.
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT,async () => {
    
     console.log('%s listening at 3001',);
