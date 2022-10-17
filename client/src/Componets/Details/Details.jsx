@@ -23,6 +23,7 @@ export default function Details() {
                         <Link to='/Home'><button>x</button></Link>
                             <div className='container-izquierda'>
                                 <h1>{el.name}</h1>
+                                
                                 <p>Fecha lanzamiento: {el.released}</p>
                             
                                 <p>Rating : {el.rating}</p>
