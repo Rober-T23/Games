@@ -39,7 +39,7 @@ const getApiInfo = async () => {
         console.log('los datos de videogames ya estan cargados 202');
     }
    } catch (error) {
-      res.status(400).send(error);
+    console.log('error: ' + error);
    }
 };
 
