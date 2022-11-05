@@ -17,7 +17,7 @@ import {
 export const getAllGames = () => {
   return async function (dispatch) {
     try {
-      const json = await axios.get('http://localhost:3001/videogames/allGames');
+      const json = await axios.get('https://games-production.up.railway.app/videogames/allGames');
       return dispatch({ type: GET_ALL_GAMES, payload: json.data });
     } catch (error) {
       console.log(error);
@@ -34,7 +34,7 @@ export function paginado(numero) {
 export const getGamesName = (name) => {
   return async function (dispatch) {
     try {
-      const json = await axios.get('http://localhost:3001/videogames/allGames?name='+name);
+      const json = await axios.get('https://games-production.up.railway.app/videogames/allGames?name='+name);
       return dispatch({ type: SEARCH_NAME_GAMES, payload: json.data });
     } catch (error) {
       dispatch({ type: SET_ERROR, payload: error });
@@ -54,7 +54,7 @@ export function orderByaz(order) {
 export const getAllGenders = () => {
   return async function (dispatch) {
     try {
-      const json = await axios.get('http://localhost:3001/videogames/genders');
+      const json = await axios.get('https://games-production.up.railway.app/videogames/genders');
       return dispatch({ type:  GET_ALL_GEDERS, payload: json.data });
     } catch (error) {
       console.log(error);
@@ -88,7 +88,7 @@ export function details(id){
 export function postAddGames(payload) {
   return function () {
     return axios
-      .post('http://localhost:3001/videogames', payload)
+      .post('https://games-production.up.railway.app/videogames', payload)
       .then((json) => {
         alert('Video Juego Creado Exitosamente');
       })
